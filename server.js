@@ -5,7 +5,7 @@ const User = require("./model/User");
 const cors = require("cors");
 
 var app = express();
-var connectDb = require("./db");
+const connectDb = require("./config/db");
 app.use(cors());
 
 app.use(express.json({ extended: false }));
@@ -44,4 +44,6 @@ app.post("/post", (req, res) => {
 //     console.log("deleted");
 //   });
 // });
-app.listen(3004, () => console.log("Port 3004"));
+
+const PORT = process.env.PORT || 3004;
+app.listen(PORT, () => console.log(`Server Started at ${PORT}`));
