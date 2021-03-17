@@ -12,7 +12,7 @@ const App = () => {
     <Router>
       <Fragment>
         <Navbar />
-        
+
         <Route exact path="/" component={Home}></Route>
         <section className="container">
           <Switch className="padding">

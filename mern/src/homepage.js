@@ -1,22 +1,60 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class HomePage extends Component {
-  state = {};
+  state = { products: [], title: "", price: "", desc: "" };
+
+  componentDidMount() {
+    axios.get("/getProducts").then(res => {
+      this.setState({ products: res.data });
+    });
+  }
+  handle = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+  handleSubmit = event => {
+    // event.preventDefault();
+    axios
+      .post("addProducts", {
+        title: this.state.title,
+        price: this.state.price,
+        description: this.state.desc,
+      })
+      .then(res => {
+        console.log(res.data);
+      });
+  };
   render() {
     return (
       <div>
-        <h1>
-          <h1>
-            Form validation in React allows an error message to be displayed if
-            the user has not correctly filled out the form with the expected
-            type of input. There are several ways to validate forms in React;
-            however, this shot will focus on creating a validator function with
-            validation rules. Code The code below assumes that the user is
-            familiar with the procedure and elements needed to make a React
-            form. The form validation rules are applied in the handleChange
-            function that handles input from users.
-          </h1>
-        </h1>
+        <h1>Home Page</h1>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            onChange={this.handle}
+          ></input>
+          <input
+            type="number"
+            name="price"
+            placeholder="Price"
+            onChange={this.handle}
+          ></input>
+          <input
+            type="text"
+            name="desc"
+            placeholder="Description"
+            onChange={this.handle}
+          ></input>
+          <button type="submit">Submit</button>
+        </form>
+
+        <ul>
+          {this.state.products.map(product => (
+            <li key={product._id}>{product.title}</li>
+          ))}
+        </ul>
       </div>
     );
   }

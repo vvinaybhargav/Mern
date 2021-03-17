@@ -17,6 +17,8 @@ app.use("/register", require("./api/register"));
 app.use("/admin", require("./api/admin"));
 app.use("/auth", require("./api/auth"));
 app.use("/delete", require("./api/delete"));
+app.use("/addProducts", require("./api/addProducts"));
+app.use('/getProducts',require('./api/getProducts'))
 
 router.delete("/d", (req, res) => {
   res.send("deleted");

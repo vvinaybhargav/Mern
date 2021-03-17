@@ -17,7 +17,7 @@ class Login extends Component {
     event.preventDefault();
     var x = document.forms["loginForm"]["email"].value;
     var y = document.forms["loginForm"]["password"].value;
-    if (x == "" || y == "") {
+    if (x === "" || y === "") {
       document.getElementById("emptyinput").innerHTML = "!Empty Values";
     }
 
@@ -41,30 +41,31 @@ class Login extends Component {
   render() {
     return (
       <Fragment>
+        <h1>Login</h1>
         <h1 className="badge badge-warning" id="emptyinput"></h1>
         <form name="loginForm" onSubmit={this.handleSubmit}>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+          <div className="form-group">
+            <label>Email address</label>
             <input
               type="email"
               name="email"
               onChange={this.handleChange}
-              class="form-control"
+              className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter email"
             ></input>
-            <small id="emailHelp" class="form-text text-muted">
+            <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else...
             </small>
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+          <div className="form-group">
+            <label>Password</label>
             <input
               type="password"
               name="password"
               onChange={this.handleChange}
-              class="form-control"
+              className="form-control"
               id="exampleInputPassword1"
               placeholder="Password"
             />
@@ -73,7 +74,7 @@ class Login extends Component {
             <p className="badge badge-danger" id="invalidcredentials"></p>
           </div>
 
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" className="btn btn-primary">
             Submit
           </button>
         </form>
