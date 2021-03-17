@@ -14,7 +14,7 @@ const App = () => {
         <Navbar />
 
         <Route exact path="/" component={Home}></Route>
-        <section className="container">
+        <section>
           <Switch className="padding">
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/register" component={Register}></Route>
