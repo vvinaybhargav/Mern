@@ -7,6 +7,7 @@ class Login extends Component {
     email: "",
     password: "",
   };
+  validateForm = () => {};
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -14,6 +15,12 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    var x = document.forms["loginForm"]["email"].value;
+    var y = document.forms["loginForm"]["password"].value;
+    if (x == "" || y == "") {
+      document.getElementById("emptyinput").innerHTML = "!Empty Values";
+    }
+
     const { history } = this.props;
     axios
       .post("/auth", {
@@ -21,18 +28,21 @@ class Login extends Component {
         password: this.state.password,
       })
       .then(res => {
-        console.log(res.data);
-        function myFunction() {
-          alert("Hello! I am an alert box!");
-        }
+        alert("Login Success");
+
         history.push("/homepage");
-      });
+      })
+      .catch(
+        (document.getElementById("invalidcredentials").innerHTML =
+          "Invalid Username or Password")
+      );
   };
 
   render() {
     return (
       <Fragment>
-        <form onSubmit={this.handleSubmit}>
+        <h1 className="badge badge-warning" id="emptyinput"></h1>
+        <form name="loginForm" onSubmit={this.handleSubmit}>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input
@@ -59,6 +69,10 @@ class Login extends Component {
               placeholder="Password"
             />
           </div>
+          <div className="form-group">
+            <p className="badge badge-danger" id="invalidcredentials"></p>
+          </div>
+
           <button type="submit" class="btn btn-primary">
             Submit
           </button>
