@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -22,24 +22,48 @@ class Login extends Component {
       })
       .then(res => {
         console.log(res.data);
+        function myFunction() {
+          alert("Hello! I am an alert box!");
+        }
         history.push("/homepage");
       });
   };
 
   render() {
     return (
-      <div>
+      <Fragment>
         <form onSubmit={this.handleSubmit}>
-          <h1>Login</h1>
-          <input type="text" name="email" onChange={this.handleChange}></input>
-          <input
-            type="password"
-            name="password"
-            onChange={this.handleChange}
-          ></input>
-          <button type="submit">Submit</button>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input
+              type="email"
+              name="email"
+              onChange={this.handleChange}
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            ></input>
+            <small id="emailHelp" class="form-text text-muted">
+              We'll never share your email with anyone else.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              name="password"
+              onChange={this.handleChange}
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="Password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
         </form>
-      </div>
+      </Fragment>
     );
   }
 }

@@ -5,11 +5,14 @@ import Login from "./login";
 import Register from "./register";
 import Home from "./home";
 import HomePage from "./homepage";
+import Navbar from "./navbar";
 
 const App = () => {
   return (
     <Router>
       <Fragment>
+        <Navbar />
+        
         <Route exact path="/" component={Home}></Route>
         <section className="container">
           <Switch className="padding">
