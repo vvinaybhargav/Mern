@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
+import Update from "./update";
 
 class HomePage extends Component {
   state = {
@@ -9,6 +10,8 @@ class HomePage extends Component {
     price: "",
     desc: "",
     quantity: "",
+    dtitle: "",
+    p_id: "",
   };
 
   componentDidMount() {
@@ -22,7 +25,7 @@ class HomePage extends Component {
 
   handleSubmit = event => {
     axios
-      .post("addProducts", {
+      .post("/addProducts", {
         title: this.state.title,
         price: this.state.price,
         description: this.state.desc,
@@ -82,6 +85,13 @@ class HomePage extends Component {
                   </div>
                   <div className="card-text"> ${product.price}</div>
                   <div className="card-text">{product.description}</div>
+                  <div className="card-text">
+                    <Update
+                      p_id={product._id}
+                      title={product.title}
+                      price={product.description}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

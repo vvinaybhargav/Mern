@@ -16,9 +16,10 @@ connectDb();
 app.use("/register", require("./api/register"));
 app.use("/admin", require("./api/admin"));
 app.use("/auth", require("./api/auth"));
-app.use("/delete", require("./api/delete"));
+app.use("/deleteProduct", require("./api/deleteProduct"));
 app.use("/addProducts", require("./api/addProducts"));
-app.use('/getProducts',require('./api/getProducts'))
+app.use("/getProducts", require("./api/getProducts"));
+app.use("/updateProduct", require("./api/updateProduct"));
 
 router.delete("/d", (req, res) => {
   res.send("deleted");

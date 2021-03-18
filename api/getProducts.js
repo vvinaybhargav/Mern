@@ -7,4 +7,9 @@ router.get("/", (req, res) => {
     res.send(saved);
   });
 });
+router.get("/:id", (req, res) => {
+  Products.findById(req.params.id, (err, saved) => {
+    res.send(saved);
+  });
+});
 module.exports = router;

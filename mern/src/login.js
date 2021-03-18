@@ -22,6 +22,7 @@ class Login extends Component {
     }
 
     const { history } = this.props;
+
     axios
       .post("/auth", {
         email: this.state.email,
@@ -69,6 +70,9 @@ class Login extends Component {
               id="exampleInputPassword1"
               placeholder="Password"
             />
+            <small id="emailHelp" className="form-text text-muted">
+              Passwords are encrypted we cant see your password
+            </small>
           </div>
           <div className="form-group">
             <p className="badge badge-danger" id="invalidcredentials"></p>
