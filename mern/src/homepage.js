@@ -25,21 +25,21 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <h1>Home Page</h1>
+        <h1>Admin Home Page</h1>
         <Products />
 
         <div className="row pad">
           {this.state.products.map(product => (
-            <div class="card mb-3 h-100 width" key={product._id}>
-              <div class="row g-5">
-                <div class="col-sm-4 col-lg-4">
+            <div class="card mb-5 h-100" key={product._id}>
+              <div class="row">
+                <div class="col">
                   <img
                     src="https://s3.ap-southeast-1.amazonaws.com/images.asianage.com/images/aa-Cover-bekv6ev394c96hh1nok5hp4ra5-20190903132341.jpeg"
                     alt="image"
-                    className="img-fluid img"
+                    className="img"
                   />
                 </div>
-                <div class="col-md-8">
+                <div class="col">
                   <div class="card-body">
                     <h4 class="card-title">{product.title}</h4>
                     <h5 class="card-text color">₹ {product.price}</h5>

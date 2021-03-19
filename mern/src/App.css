@@ -55,19 +55,22 @@ body {
 }
 .pad {
   padding-top: 5rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-left: 3rem;
+  padding-right: 1rem;
 
   background-image: linear-gradient(rgb(131, 152, 160), rgb(196, 196, 156));
 }
 .img {
   border-radius: 5%;
-  height: fit-content;
-  width: fit-content;
+  height: 15.5rem;
+  width: 20rem;
 }
 .color {
   color: coral;
 }
 .color1 {
   color: rgb(10, 134, 20);
+}
+.padding {
+  margin-top: 1.5ch;
 }

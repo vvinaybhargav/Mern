@@ -32,19 +32,19 @@ class Update extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="row-sm-2">
         <form onSubmit={this.uhandleSubmit}>
           <input
             type="text"
             placeholder="Quantity"
             onChange={this.uhandle}
           ></input>
-          <button className="btn btn-warning padding" type="submit">
+          <button className="col btn btn-warning padding" type="submit">
             Update
           </button>
         </form>
         <form onSubmit={this.dhandleSubmit}>
-          <button className="btn btn-danger padding" type="submit">
+          <button className="col btn btn-danger padding" type="submit">
             Delete
           </button>
         </form>

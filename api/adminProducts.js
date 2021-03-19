@@ -17,7 +17,7 @@ router.post("/", (req, res) => {
   var product = new Products();
   product.title = req.body.title;
   product.price = req.body.price;
-  product.quantity = req.body.quantity;
+  product.quantity = 10;
   product.description = req.body.description;
 
   Products.updateOne(
@@ -26,7 +26,6 @@ router.post("/", (req, res) => {
       title: product.title,
       quantity: product.quantity,
       price: product.price,
-      description: product.description,
     },
     { upsert: true },
     (err, upserted) => {
