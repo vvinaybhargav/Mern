@@ -36,9 +36,38 @@
     transform: rotate(360deg);
   }
 }
-.padding {
-  padding: 5ch;
-}
+
 .size {
   width: 18rem;
+  background-color: #61dafb;
+  background-image: linear-gradient(rgb(131, 152, 160), rgb(196, 196, 156));
+  align-items: center;
+}
+body {
+  background-color: red;
+  background-image: linear-gradient(rgb(131, 152, 160), rgb(196, 196, 156));
+}
+.width {
+  width: 400px;
+  height: 120px;
+  background-color: aliceblue;
+  border-radius: 2%;
+}
+.pad {
+  padding-top: 5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+
+  background-image: linear-gradient(rgb(131, 152, 160), rgb(196, 196, 156));
+}
+.img {
+  border-radius: 5%;
+  height: fit-content;
+  width: fit-content;
+}
+.color {
+  color: coral;
+}
+.color1 {
+  color: rgb(10, 134, 20);
 }

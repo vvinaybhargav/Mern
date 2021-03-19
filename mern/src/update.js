@@ -3,7 +3,7 @@ import axios from "axios";
 
 class Update extends Component {
   state = {
-    title: "",
+    quantity: "",
   };
   constructor(props) {
     super(props);
@@ -12,21 +12,21 @@ class Update extends Component {
     this.uhandle = this.uhandle.bind(this);
   }
   uhandle = event => {
-    this.setState({ title: event.target.value });
+    this.setState({ quantity: event.target.value });
   };
   uhandleSubmit = event => {
     console.log(this.props.p_id);
     const id = this.props.p_id;
 
-    axios.patch(`/updateProduct/${id}`, {
-      title: this.state.title,
+    axios.patch(`/adminProducts/${id}`, {
+      quantity: this.state.quantity,
     });
   };
   dhandleSubmit = event => {
     console.log(this.props.p_id);
     const id = this.props.p_id;
 
-    axios.delete(`/deleteProduct/${id}`, (req, res) => {
+    axios.delete(`/adminProducts/${id}`, (req, res) => {
       res.send("deleted");
     });
   };
@@ -34,11 +34,19 @@ class Update extends Component {
     return (
       <div>
         <form onSubmit={this.uhandleSubmit}>
-          <input type="text" onChange={this.uhandle}></input>
-          <button type="submit">Update</button>
+          <input
+            type="text"
+            placeholder="Quantity"
+            onChange={this.uhandle}
+          ></input>
+          <button className="btn btn-warning padding" type="submit">
+            Update
+          </button>
         </form>
         <form onSubmit={this.dhandleSubmit}>
-          <button type="submit">Delete</button>
+          <button className="btn btn-danger padding" type="submit">
+            Delete
+          </button>
         </form>
       </div>
     );

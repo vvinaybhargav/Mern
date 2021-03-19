@@ -14,40 +14,8 @@ app.use(express.json({ extended: false }));
 connectDb();
 
 app.use("/register", require("./api/register"));
-app.use("/admin", require("./api/admin"));
 app.use("/auth", require("./api/auth"));
-app.use("/deleteProduct", require("./api/deleteProduct"));
-app.use("/addProducts", require("./api/addProducts"));
-app.use("/getProducts", require("./api/getProducts"));
-app.use("/updateProduct", require("./api/updateProduct"));
-
-router.delete("/d", (req, res) => {
-  res.send("deleted");
-});
-
-app.get("/get", cors(), (req, res) => {
-  User.find({}, (err, user) => {
-    res.send(user);
-  });
-});
-
-app.post("/post", (req, res) => {
-  var i = new Product();
-  i.title = req.body.title;
-  i.price = req.body.price;
-
-  i.save((err, saved) => {
-    res.send(saved);
-  });
-});
-// app.delete("/delete/:id", cors(), (req, res) => {
-//   var i = new Product();
-//   i.title = req.body.title;
-//   Product.remove({ title: i.title }, (err, deleted) => {
-//     res.send(deleted);
-//     console.log("deleted");
-//   });
-// });
+app.use("/adminProducts", require("./api/adminProducts"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("mern/build"));

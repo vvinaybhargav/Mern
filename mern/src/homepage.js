@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
 import Update from "./update";
+import Cart from "./cart";
+import Products from "./products";
 
 class HomePage extends Component {
   state = {
@@ -9,88 +11,41 @@ class HomePage extends Component {
     title: "",
     price: "",
     desc: "",
-    quantity: "",
+    quantity: 1,
     dtitle: "",
     p_id: "",
   };
 
   componentDidMount() {
-    axios.get("/getProducts").then(res => {
+    axios.get("/adminProducts").then(res => {
       this.setState({ products: res.data });
     });
   }
-  handle = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  handleSubmit = event => {
-    axios
-      .post("/addProducts", {
-        title: this.state.title,
-        price: this.state.price,
-        description: this.state.desc,
-        quantity: this.state.quantity,
-      })
-      .then(res => {
-        console.log(res.data);
-      });
-  };
 
   render() {
     return (
       <div>
         <h1>Home Page</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            onChange={this.handle}
-          ></input>
-          <input
-            type="number"
-            name="quantity"
-            placeholder="Quantity"
-            onChange={this.handle}
-          ></input>
-          <input
-            type="number"
-            name="price"
-            placeholder="Price"
-            onChange={this.handle}
-          ></input>
-          <input
-            type="text"
-            name="desc"
-            maxLength="32"
-            placeholder="Description"
-            onChange={this.handle}
-          ></input>
+        <Products />
 
-          <button type="submit">Submit</button>
-        </form>
-
-        <div className="row">
+        <div className="row pad">
           {this.state.products.map(product => (
-            <div className="col-sm-3" key={product._id}>
-              <div className="card size">
-                <img
-                  className="card-img-top"
-                  src="https://image.shutterstock.com/image-photo/red-apple-isolated-on-white-260nw-1727544364.jpg"
-                  alt="apple"
-                ></img>
-                <div className="card-block">
-                  <div className="card-title">
-                    <h3>{product.title}</h3>
-                  </div>
-                  <div className="card-text"> ${product.price}</div>
-                  <div className="card-text">{product.description}</div>
-                  <div className="card-text">
-                    <Update
-                      p_id={product._id}
-                      title={product.title}
-                      price={product.description}
-                    />
+            <div class="card mb-3 h-100 width" key={product._id}>
+              <div class="row g-5">
+                <div class="col-sm-4 col-lg-4">
+                  <img
+                    src="https://s3.ap-southeast-1.amazonaws.com/images.asianage.com/images/aa-Cover-bekv6ev394c96hh1nok5hp4ra5-20190903132341.jpeg"
+                    alt="image"
+                    className="img-fluid img"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h4 class="card-title">{product.title}</h4>
+                    <h5 class="card-text color">₹ {product.price}</h5>
+                    <h6 class="card-text color1">
+                      {product.quantity} In Stock <Update p_id={product._id} />
+                    </h6>
                   </div>
                 </div>
               </div>
