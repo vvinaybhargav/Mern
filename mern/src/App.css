@@ -44,26 +44,19 @@
   align-items: center;
 }
 body {
-  background-color: red;
-  background-image: linear-gradient(rgb(131, 152, 160), rgb(196, 196, 156));
+  background-color: rgb(184, 200, 247);
+  overflow-x: hidden;
 }
-.width {
-  width: 400px;
-  height: 120px;
-  background-color: aliceblue;
-  border-radius: 2%;
-}
+
 .pad {
   padding-top: 5rem;
   padding-left: 3rem;
   padding-right: 1rem;
-
-  background-image: linear-gradient(rgb(131, 152, 160), rgb(196, 196, 156));
 }
 .img {
-  border-radius: 5%;
-  height: 15.5rem;
-  width: 20rem;
+  border-radius: 3%;
+  height: auto;
+  width: auto;
 }
 .color {
   color: coral;
@@ -71,6 +64,43 @@ body {
 .color1 {
   color: rgb(10, 134, 20);
 }
-.padding {
-  margin-top: 1.5ch;
+
+.input {
+  width: 5ch;
+}
+.column {
+  float: left;
+  width: 20%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 50%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: left;
+  background-color: #f1f1f1;
+  margin-top: 3ch;
+  border-radius: 5%;
 }

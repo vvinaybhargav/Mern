@@ -4,6 +4,7 @@ import "./App.css";
 import Update from "./update";
 import Cart from "./cart";
 import Products from "./products";
+import apple from "./apple.jpeg";
 
 class HomePage extends Component {
   state = {
@@ -12,8 +13,6 @@ class HomePage extends Component {
     price: "",
     desc: "",
     quantity: 1,
-    dtitle: "",
-    p_id: "",
   };
 
   componentDidMount() {
@@ -28,29 +27,24 @@ class HomePage extends Component {
         <h1>Admin Home Page</h1>
         <Products />
 
-        <div className="row pad">
-          {this.state.products.map(product => (
-            <div class="card mb-5 h-100" key={product._id}>
-              <div class="row">
-                <div class="col">
-                  <img
-                    src="https://s3.ap-southeast-1.amazonaws.com/images.asianage.com/images/aa-Cover-bekv6ev394c96hh1nok5hp4ra5-20190903132341.jpeg"
-                    alt="image"
-                    className="img"
-                  />
-                </div>
-                <div class="col">
-                  <div class="card-body">
-                    <h4 class="card-title">{product.title}</h4>
-                    <h5 class="card-text color">₹ {product.price}</h5>
-                    <h6 class="card-text color1">
-                      {product.quantity} In Stock <Update p_id={product._id} />
-                    </h6>
+        <div className="container-fluid">
+          <div class="row">
+            {this.state.products.map(product => (
+              <div class="column">
+                <div class="card">
+                  <img src={apple} alt="image" className="img" />
+                  <div className="card-title">
+                    <h4>{product.title}</h4>
                   </div>
+                  <h5 className="color">₹ {product.price}</h5>
+                  <h6 className="color1">{product.quantity}</h6>
+                  <h7 className="card-text">
+                    <Update p_id={product._id} />
+                  </h7>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     );

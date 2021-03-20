@@ -22,8 +22,7 @@ class Products extends Component {
       .post("/adminProducts", {
         title: this.state.title,
         price: this.state.price,
-        description: this.state.desc,
-        quantity: this.state.quantity,
+        
       })
       .then(res => {
         console.log(res.data);

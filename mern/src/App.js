@@ -6,6 +6,7 @@ import Register from "./register";
 import Home from "./home";
 import HomePage from "./homepage";
 import Navbar from "./navbar";
+import Customer from "./Customer";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/homePage" component={HomePage}></Route>
+            <Route exact path="/customer" component={Customer}></Route>
           </Switch>
         </section>
       </Fragment>

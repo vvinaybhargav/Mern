@@ -17,14 +17,14 @@ router.post("/", (req, res) => {
   var product = new Products();
   product.title = req.body.title;
   product.price = req.body.price;
-  product.quantity = 10;
+
   product.description = req.body.description;
 
   Products.updateOne(
     { title: product.title },
     {
       title: product.title,
-      quantity: product.quantity,
+
       price: product.price,
     },
     { upsert: true },
@@ -34,23 +34,31 @@ router.post("/", (req, res) => {
   );
 });
 
-router.patch("/:id", async (req, res) => {
-  try {
-    const deletebyId = await Products.findById(req.params.id);
-    deletebyId.quantity = req.body.quantity;
-    const a1 = await deletebyId.save();
-    res.json(a1);
-  } catch (err) {
-    res.send(err);
-  }
+router.patch("/:id", (req, res) => {
+  var product = new Products();
+  product.title = req.body.title;
+  product.price = req.body.price;
+  product.quantity = req.body.quantity;
+
+  product.description = req.body.description;
+
+  Products.findByIdAndUpdate(
+    req.params.id,
+    {
+      $inc: { quantity: product.quantity },
+    },
+    (err, updated) => {
+      console.log(updated);
+      console.log(err);
+    }
+  );
 });
 
 router.delete("/:id", async (req, res) => {
   try {
-    const deletebyId = await Products.findById(req.params.id);
-    deletebyId.title = req.body.title;
-    const a1 = await deletebyId.remove();
-    res.json(a1);
+    await Products.findByIdAndDelete(req.params.id, (err, deleted) => {
+      console.log(deleted);
+    });
   } catch (err) {
     res.send("error");
   }

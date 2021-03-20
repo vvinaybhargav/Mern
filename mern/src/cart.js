@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 class Cart extends Component {
   state = {};
-  incr = () => {
-    var value = parseInt(document.getElementById("number").value);
-    value++;
-  };
+  incr = () => {};
   render() {
     return (
       <div>

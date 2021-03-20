@@ -14,14 +14,19 @@ class Update extends Component {
   uhandle = event => {
     this.setState({ quantity: event.target.value });
   };
-  uhandleSubmit = event => {
-    console.log(this.props.p_id);
+  uhandleSubmit = async event => {
     const id = this.props.p_id;
-
-    axios.patch(`/adminProducts/${id}`, {
-      quantity: this.state.quantity,
-    });
+    try {
+      const res = await axios.patch(`/adminProducts/${id}`, {
+        quantity: this.state.quantity,
+      });
+      console.log(this.state.quantity);
+      console.log(res.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
+
   dhandleSubmit = event => {
     console.log(this.props.p_id);
     const id = this.props.p_id;
@@ -35,8 +40,9 @@ class Update extends Component {
       <div className="row-sm-2">
         <form onSubmit={this.uhandleSubmit}>
           <input
-            type="text"
-            placeholder="Quantity"
+            className="input"
+            type="number"
+            placeholder="0"
             onChange={this.uhandle}
           ></input>
           <button className="col btn btn-warning padding" type="submit">
