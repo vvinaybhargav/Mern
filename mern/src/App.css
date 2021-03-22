@@ -116,7 +116,7 @@ body {
   color: green;
 }
 .disable {
-  background-color: rgb(52, 106, 117);
+  cursor: text;
 }
 .Simage {
   background-image: "https://www.gardeningknowhow.com/wp-content/uploads/2020/11/branch-of-red-wine-grapes.jpg";

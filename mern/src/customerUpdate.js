@@ -48,7 +48,9 @@ class CustomerUpdate extends Component {
           <div></div>
           <button
             className={
-              this.state.count <= 0 ? "btn btn-secondary" : "btn btn-primary"
+              this.state.count <= 0
+                ? "btn btn-secondary disable"
+                : "btn btn-primary"
             }
             onClick={this.dec}
           >
@@ -57,7 +59,9 @@ class CustomerUpdate extends Component {
           <div className="badge pad">{this.state.count}</div>
           <button
             className={
-              this.props.p_qty === 0 ? "btn btn-secondary" : "btn btn-primary"
+              this.props.p_qty <= this.state.count
+                ? "btn btn-secondary dsiable"
+                : "btn btn-primary"
             }
             onClick={this.inc}
           >
@@ -69,7 +73,7 @@ class CustomerUpdate extends Component {
               className={
                 this.props.p_qty !== 0
                   ? "btn btn-primary padding"
-                  : "btn btn-secondary padding"
+                  : "btn btn-secondary padding disable"
               }
             >
               Add to Cart
