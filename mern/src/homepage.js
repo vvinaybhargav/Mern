@@ -51,7 +51,7 @@ class HomePage extends Component {
             {this.state.products.map(product => (
               <div key={product._id} className="column">
                 <div className="card">
-                  <img src={apple} alt="image" className="img" />
+                  <img src={product.image} alt="image" className="img" />
                   <div className="card-title">
                     <h4>{product.title}</h4>
                   </div>

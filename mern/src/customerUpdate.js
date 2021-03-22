@@ -14,20 +14,25 @@ class CustomerUpdate extends Component {
     this.setState({ quantity: this.state.count });
   };
   handleSubmit = async event => {
-    const id = this.props.p_id;
-    await axios
-      .patch(`/adminProducts/${id}`, { quantity: -this.state.count })
-      .then((err, res) => {
-        console.log(res.data);
-        console.log(err);
-      });
+    if (this.state.count === 0) {
+      event.preventDefault();
+    } else {
+      const id = this.props.p_id;
+      await axios
+        .patch(`/adminProducts/${id}`, { quantity: -this.state.count })
+        .then((err, res) => {
+          console.log(res.data);
+          console.log(err);
+        });
+    }
   };
   inc = event => {
     event.preventDefault();
     if (this.props.p_qty > this.state.count) {
       this.setState({ count: this.state.count + 1 });
+    } else if (this.props.p_qty === 0) {
     } else {
-      alert("max stock reached");
+      alert("Max Stock Reached");
     }
   };
   dec = event => {
@@ -40,18 +45,31 @@ class CustomerUpdate extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <div className="badge">
-            <button className="btn btn-primary padding" onClick={this.dec}>
-              -
-            </button>
-
-            {this.state.count}
-
-            <button className="btn btn-primary padding" onClick={this.inc}>
-              +
-            </button>
-          </div>
-          <button className="btn btn-primary">Add to Cart</button>
+          <div></div>
+          <button
+            className={
+              this.state.count <= 0
+                ? "btn btn-secondary padding"
+                : "btn btn-primary padding"
+            }
+            onClick={this.dec}
+          >
+            -
+          </button>
+          <div className="badge">{this.state.count}</div>
+          <button className="btn btn-primary padding" onClick={this.inc}>
+            +
+          </button>
+          <button
+            type="submit"
+            className={
+              this.props.p_qty !== 0
+                ? "btn btn-primary padding"
+                : "btn btn-secondary padding"
+            }
+          >
+            Add to Cart
+          </button>
         </form>
       </div>
     );

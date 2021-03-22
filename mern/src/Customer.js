@@ -23,11 +23,12 @@ class Customer extends Component {
           <div className="row">
             {this.state.products.map(product => (
               <div key={product._id} className="column">
-                <div className="card">
-                  <img src={apple} alt="image" className="img" />
+                <div className={product.quantity === 0 ? "card c" : "card"}>
+                  <img src={product.image} alt="image" className="img" />
                   <div className="card-title">
                     <h4>{product.title}</h4>
                   </div>
+
                   <h5 className="color">₹ {product.price}</h5>
                   <Cart p_qty={product.quantity} />
                   <h6 className="card-text">

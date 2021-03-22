@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./App.css";
 class Products extends Component {
   constructor(props) {
     super(props);
@@ -37,12 +38,14 @@ class Products extends Component {
               <option value="">Select</option>
               <option value="Apple">Apple</option>
 
-              <option value="Grape">Grape</option>
+              <option className="Simage" value="Grape">
+                Grape
+              </option>
               <option value="Orange">Orange</option>
 
               <option value="Banana">Banana</option>
               <option value="Mango">Mango</option>
-              <option value="Papayya">Papayya</option>
+              <option value="Papaya">Papaya</option>
 
               <option value="Pine Apple">Pine Apple</option>
             </select>
