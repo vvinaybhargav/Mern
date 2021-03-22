@@ -48,28 +48,33 @@ class CustomerUpdate extends Component {
           <div></div>
           <button
             className={
-              this.state.count <= 0
-                ? "btn btn-secondary padding"
-                : "btn btn-primary padding"
+              this.state.count <= 0 ? "btn btn-secondary" : "btn btn-primary"
             }
             onClick={this.dec}
           >
             -
           </button>
-          <div className="badge">{this.state.count}</div>
-          <button className="btn btn-primary padding" onClick={this.inc}>
+          <div className="badge pad">{this.state.count}</div>
+          <button
+            className={
+              this.props.p_qty === 0 ? "btn btn-secondary" : "btn btn-primary"
+            }
+            onClick={this.inc}
+          >
             +
           </button>
-          <button
-            type="submit"
-            className={
-              this.props.p_qty !== 0
-                ? "btn btn-primary padding"
-                : "btn btn-secondary padding"
-            }
-          >
-            Add to Cart
-          </button>
+          <div>
+            <button
+              type="submit"
+              className={
+                this.props.p_qty !== 0
+                  ? "btn btn-primary padding"
+                  : "btn btn-secondary padding"
+              }
+            >
+              Add to Cart
+            </button>
+          </div>
         </form>
       </div>
     );
