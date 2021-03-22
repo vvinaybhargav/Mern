@@ -13,6 +13,7 @@ class HomePage extends Component {
     price: "",
     desc: "",
     quantity: 1,
+    values: " ",
   };
 
   componentDidMount() {
@@ -21,26 +22,45 @@ class HomePage extends Component {
     });
   }
 
+  quantity = () => {
+    var q = document.getElementById("qty").value;
+    console.log(this.state.values, "clicked");
+  };
+  qh = event => {
+    event.preventDefault();
+    console.log(this.state.values);
+  };
+  stock = () => {
+    const i = document.getElementById("qty").value;
+    console.log(i);
+    if (i > 1) {
+      console.log("outofstock");
+    }
+  };
+
   render() {
+    var color = this.stock;
+
     return (
       <div>
         <h1>Admin Home Page</h1>
         <Products />
 
         <div className="container-fluid">
-          <div class="row">
+          <div className="row">
             {this.state.products.map(product => (
-              <div class="column">
-                <div class="card">
+              <div key={product._id} className="column">
+                <div className="card">
                   <img src={apple} alt="image" className="img" />
                   <div className="card-title">
                     <h4>{product.title}</h4>
                   </div>
                   <h5 className="color">₹ {product.price}</h5>
-                  <h6 className="color1">{product.quantity}</h6>
-                  <h7 className="card-text">
+
+                  <Cart p_qty={product.quantity} />
+                  <h6 className="card-text">
                     <Update p_id={product._id} />
-                  </h7>
+                  </h6>
                 </div>
               </div>
             ))}

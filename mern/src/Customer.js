@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import apple from "./apple.jpeg";
+import Cart from "./cart";
 import CustomerUpdate from "./customerUpdate";
 import HomePage from "./homepage";
 import Update from "./update";
@@ -19,18 +20,21 @@ class Customer extends Component {
     return (
       <div>
         <div className="container-fluid">
-          <div class="row">
+          <div className="row">
             {this.state.products.map(product => (
-              <div key={product._id} class="column">
-                <div class="card">
+              <div key={product._id} className="column">
+                <div className="card">
                   <img src={apple} alt="image" className="img" />
                   <div className="card-title">
                     <h4>{product.title}</h4>
                   </div>
                   <h5 className="color">₹ {product.price}</h5>
-                  <h6 className="color1">{product.quantity} in stock</h6>
+                  <Cart p_qty={product.quantity} />
                   <h6 className="card-text">
-                    <CustomerUpdate p_id={product._id} />
+                    <CustomerUpdate
+                      p_id={product._id}
+                      p_qty={product.quantity}
+                    />
                   </h6>
                 </div>
               </div>

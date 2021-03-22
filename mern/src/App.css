@@ -51,7 +51,10 @@ body {
 .pad {
   padding-top: 5rem;
   padding-left: 3rem;
-  padding-right: 1rem;
+  padding-right: 3rem;
+}
+.padding {
+  margin: 1rem;
 }
 .img {
   border-radius: 3%;
@@ -103,4 +106,10 @@ body {
   background-color: #f1f1f1;
   margin-top: 3ch;
   border-radius: 5%;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
 }

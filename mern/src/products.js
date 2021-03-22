@@ -22,7 +22,6 @@ class Products extends Component {
       .post("/adminProducts", {
         title: this.state.title,
         price: this.state.price,
-        
       })
       .then(res => {
         console.log(res.data);
@@ -32,36 +31,37 @@ class Products extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <select name="title" onChange={this.handle}>
-            <option value="">Select</option>
-            <option value="Apple">Apple</option>
+        <div className="form-group">
+          <form onSubmit={this.handleSubmit}>
+            <select name="title" onChange={this.handle}>
+              <option value="">Select</option>
+              <option value="Apple">Apple</option>
 
-            <option value="Grape">Grape</option>
-            <option value="Orange">Orange</option>
+              <option value="Grape">Grape</option>
+              <option value="Orange">Orange</option>
 
-            <option value="Banana">Banana</option>
-            <option value="Mango">Mango</option>
-            <option value="Papayya">Papayya</option>
+              <option value="Banana">Banana</option>
+              <option value="Mango">Mango</option>
+              <option value="Papayya">Papayya</option>
 
-            <option value="Pine Apple">Pine Apple</option>
-          </select>
+              <option value="Pine Apple">Pine Apple</option>
+            </select>
 
-          {/* <input
+            {/* <input
             type="number"
             name="quantity"
             placeholder="Quantity"
             min="1"
             onChange={this.handle}
           ></input> */}
-          <input
-            type="number"
-            name="price"
-            min="1"
-            placeholder="Price"
-            onChange={this.handle}
-          ></input>
-          {/* <input
+            <input
+              type="number"
+              name="price"
+              min="1"
+              placeholder="Price"
+              onChange={this.handle}
+            ></input>
+            {/* <input
             type="text"
             name="desc"
             maxLength="32"
@@ -69,8 +69,9 @@ class Products extends Component {
             onChange={this.handle}
           ></input> */}
 
-          <button type="submit">Submit</button>
-        </form>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     );
   }

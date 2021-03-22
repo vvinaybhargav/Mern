@@ -30,13 +30,12 @@ class Login extends Component {
       })
       .then(res => {
         alert("Login Success");
-
-        history.push("/homepage");
+        history.push("customer");
       })
-      .catch(
-        (document.getElementById("invalidcredentials").innerHTML =
-          "Invalid Username or Password")
-      );
+      .catch(err => {
+        document.getElementById("invalidcredentials").innerHTML =
+          "Invalid Username or Password";
+      });
   };
 
   render() {

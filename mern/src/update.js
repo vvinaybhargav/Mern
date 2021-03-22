@@ -38,22 +38,25 @@ class Update extends Component {
   render() {
     return (
       <div className="row-sm-2">
-        <form onSubmit={this.uhandleSubmit}>
-          <input
-            className="input"
-            type="number"
-            placeholder="0"
-            onChange={this.uhandle}
-          ></input>
-          <button className="col btn btn-warning padding" type="submit">
-            Update
-          </button>
-        </form>
-        <form onSubmit={this.dhandleSubmit}>
-          <button className="col btn btn-danger padding" type="submit">
-            Delete
-          </button>
-        </form>
+        <div className="form-group">
+          <form onSubmit={this.uhandleSubmit}>
+            <input
+              className="input"
+              type="number"
+              placeholder="0"
+              min="0"
+              onChange={this.uhandle}
+            ></input>
+            <button className="col btn btn-warning" type="submit">
+              Update
+            </button>
+          </form>
+          <form onSubmit={this.dhandleSubmit}>
+            <button className="col btn btn-danger" type="submit">
+              Delete
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
