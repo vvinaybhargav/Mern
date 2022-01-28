@@ -6,6 +6,6 @@ testing1
 
 master
 master
-dev
-dev
+master
+
 
