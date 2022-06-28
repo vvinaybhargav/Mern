@@ -1,3 +1,3 @@
 Testingdoen
-3.1dev
+3.1
 uubi
